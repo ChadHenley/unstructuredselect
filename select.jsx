@@ -8,13 +8,13 @@ export default class UnstructuredSelect extends Component {
     this.renderOptions = this.renderOptions.bind(this);
   }
 
-  // on mount construct an object that includes options labels and a value of any type 
+  // on mount construct an object that includes options labels and a value of any type
   componentDidMount(){
     const optionsObject = this.props.options.map((optionObject, idx)=>{
       return {
         index: idx,
-        value: optionObject.value,
-        label: optionObject.value
+        value: optionObject,
+        label: optionObject
       }
     });
     this.setState({
@@ -38,7 +38,7 @@ export default class UnstructuredSelect extends Component {
         {
           this.state.options.map((option)=>{
             return(
-              <option value={option.index}>{option.label}</option>
+              <option key={option.index} value={option.index}>{option.label}</option>
             )
           })
         }
@@ -47,8 +47,10 @@ export default class UnstructuredSelect extends Component {
     }
   }
   render(){
-    <div>
-     {this.renderOptions()}
-    </div>
+    return(
+      <div>
+       {this.renderOptions()}
+      </div>
+    )
   }
 }
