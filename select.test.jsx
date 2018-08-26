@@ -6,6 +6,7 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
 describe('App', () => {
+
   it('should render 1 options', () => {
     const twoOptions = ['cats'];
     const component = shallow(<UnstructuredSelect options={twoOptions} />);
@@ -22,5 +23,11 @@ describe('App', () => {
     const twoOptions = ['cats', 'dog', 'wolf'];
     const component = shallow(<UnstructuredSelect options={twoOptions} />);
     expect(component.find('option').length).toEqual(3);
+  });
+
+  it('should render complex object', () => {
+    const twoOptions = [ ['cats', 'dogs'], {object: 'obj'}, 'wolf' ];
+    const component = shallow(<UnstructuredSelect options={twoOptions} />);
+    expect(component.find('option').length).toEqual(4);
   });
 });

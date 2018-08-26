@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import _ from 'lodash';
 
 export default class UnstructuredSelect extends Component {
   constructor(props){
@@ -10,13 +11,37 @@ export default class UnstructuredSelect extends Component {
 
   // on mount construct an object that includes options labels and a value of any type
   componentDidMount(){
-    const optionsObject = this.props.options.map((optionObject, idx)=>{
-      return {
-        index: idx,
-        value: optionObject,
-        label: optionObject
+    let globalIndex = 0;
+    const optionsObject = this.props.options.reduce((allOption, currentOptionObject) => {
+
+      if (currentOptionObject instanceof Object && !(currentOptionObject instanceof Array) ) {
+        globalIndex++;
+        return allOption.concat({
+          index: globalIndex,
+          value: currentOptionObject.object,
+          label: currentOptionObject.object
+        });
+      } else if (currentOptionObject instanceof Array){
+        return allOption.concat(
+          currentOptionObject.map((currentItem) => {
+            globalIndex++;
+            return {
+              index: globalIndex,
+              value: currentItem,
+              label: currentItem
+            }
+          })
+        );
+      } else {
+        globalIndex++;
+        return allOption.concat({
+          index: globalIndex,
+          value: currentOptionObject,
+          label: currentOptionObject
+        });
       }
-    });
+    }, [])
+
     this.setState({
       options: optionsObject
     });
