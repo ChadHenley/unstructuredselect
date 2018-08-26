@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import _ from 'lodash';
 
 export default class UnstructuredSelect extends Component {
   constructor(props){
@@ -11,7 +10,7 @@ export default class UnstructuredSelect extends Component {
 
   // on mount construct an object that includes options labels and a value of any type
   componentDidMount(){
-    let globalIndex = 0;
+    let index = 0;
     const optionsObject = this.props.options.reduce((allOption, currentOptionObject) => {
 
       if (currentOptionObject instanceof Object && !(currentOptionObject instanceof Array) ) {

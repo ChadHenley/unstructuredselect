@@ -5,7 +5,7 @@ import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
-describe('App', () => {
+describe('select', () => {
 
   it('should render 1 options', () => {
     const twoOptions = ['cats'];
