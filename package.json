@@ -1,6 +1,6 @@
 {
   "name": "unstructured-select",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A select that works with option values of any type not just strings",
   "main": "build/index.js",
   "scripts": {
