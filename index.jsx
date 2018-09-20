@@ -1,2 +1,2 @@
 const UnstructuredSelect = require('./select');
-exports.UnstructuredSelect = UnstructuredSelect;
+module.exports.UnstructuredSelect = UnstructuredSelect;  
